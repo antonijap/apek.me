@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <router-view/>
-    <footer-prismic/>
+    <footer/>
   </div>
 </template>
 
 <script>
-import FooterPrismic from './components/FooterPrismic.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    FooterPrismic
+    Footer
   }
 }
 </script>
