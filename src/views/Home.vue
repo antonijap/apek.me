@@ -5,25 +5,11 @@
 </template>
 
 <style lanf="scss" scoped>
-body {
-  font-family: bio-sans, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
+@import "../css/base.css";
 .wrapper {
   width: 960px;
   margin: 10em auto;
-  h1 {
-    text-align: center;
-  }
-  a {
-    font-weight: 600;
-    font-style: italic;
-  }
 }
-
-
 </style>
 
 
