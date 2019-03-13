@@ -1,11 +1,14 @@
 <template>
 	<div class="wrapper">
-		<h1>{{ $prismic.richTextAsPlain(homepage.data.site_title) }}</h1>
+		<h1>{{ $prismic.richTextAsPlain(homepage.data.title) }}</h1>
 		<div class="projects">
 			<div class="project" v-for="(work, index) in works" :key="index">
-			<!-- {{ $prismic.richTextAsPlain(work.data.title) }} -->
-			<img :src="work.data.promo_image.url"/>
+				<!-- {{ $prismic.richTextAsPlain(work.data.title) }} -->
+				<img :src="work.data.promo_image.url"/>
+			</div>
 		</div>
+		<div class="something">
+			<p>{{ $prismic.richTextAsPlain(homepage.data.title) }}</p>
 		</div>
 	</div>
 </template>
@@ -15,16 +18,39 @@
 
 .wrapper {
   width: 90%;
-  margin: 10em auto;
+  margin: 4em auto;
+
+  @include md {
+	width: 80%;
+	margin: 10em auto;
+  }
+
+  @include xl {
+    width: 60%;
+  }
+
+  h1, p {
+	  margin-left: $space-x-large;
+	  margin-right: $space-x-large;
+
+	@include md {
+		margin-left: $space-x-large * 4;
+	  	margin-right: $space-x-large * 4;
+	}
+  }
 
   .projects {
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: $space-base;
-    grid-row-gap: $space-base;
+	grid-row-gap: $space-base;
+	margin-bottom: $space-base * 8;
+	margin-top: $space-base * 8;
 
     @include md {
-      grid-template-columns: 1fr 1fr;
+	  	grid-template-columns: 1fr 1fr;
+	  	margin-bottom: $space-base * 16;
+		margin-top: $space-base * 16;
     }
   }
 }
