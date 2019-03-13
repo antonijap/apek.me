@@ -16,58 +16,44 @@
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import "../assets/scss/main.scss";
+
 .wrapper {
-  width: 960px;
-  margin: 10em auto;
-  width: 70%;
+  width: 90%;
+  margin: 4em auto;
 
-  h1 {
-    // text-align: center;
-    font-family: bio-sans, sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 96px;
-    margin-left: 64px;
-    margin-right: 64px;
+  @include md {
+	width: 80%;
+	margin: 10em auto;
+  }
 
-		a {
-      font-family: bio-sans, sans-serif;
-      font-weight: 600;
-      font-style: italic;
-      line-height: 1.6;
-			text-decoration: none;
-			cursor: pointer;
-    }
+  @include xl {
+    width: 60%;
+  }
+
+  h1, p {
+	  margin-left: $space-x-large;
+	  margin-right: $space-x-large;
+
+	@include md {
+		margin-left: $space-x-large * 4;
+	  	margin-right: $space-x-large * 4;
+	}
   }
 
   .projects {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: $space-base;
+	grid-row-gap: $space-base;
+	margin-bottom: $space-base * 8;
+	margin-top: $space-base * 8;
 
-    .project {
-      width: 49.6%;
-      position: relative;
-
-      img {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-      }
-
-      span {
-        position: absolute;
-        bottom: 16px;
-        left: 16px;
-        color: #fff;
-        background: #000;
-        padding: 3px 6px 5px;
-        font-family: bio-sans, sans-serif;
-        font-weight: 600;
-        line-height: 1;
-        text-transform: uppercase;
-      }
+    @include md {
+	  	grid-template-columns: 1fr 1fr;
+	  	margin-bottom: $space-base * 16;
+		margin-top: $space-base * 16;
     }
   }
 }
