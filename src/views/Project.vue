@@ -1,17 +1,6 @@
 <template>
 	<div class="wrapper">
-		<prismic-rich-text v-if="homepage" :field="homepage.data.title"/>
-		<div class="projects">
-			<div class="project" v-for="(work, index) in works" :key="index">
-				<span>{{ $prismic.richTextAsPlain(work.data.title) }}</span>
-				<a :href="`/project/${work.uid}`">
-					<img :src="work.data.promo_image.url"/>
-				</a>
-			</div>
-		</div>
-		<div class="copy">
-			<prismic-rich-text v-if="homepage" :field="homepage.data.slot_1"/>
-		</div>
+		<prismic-rich-text v-if="project" :field="project.data.title"/>
 	</div>
 </template>
 
@@ -28,7 +17,7 @@
   }
 
   @include xl {
-    width: 50%;
+    width: 60%;
 	}
 
   h1,
@@ -59,23 +48,11 @@
 
 		.project {
 			position: relative;
-			overflow: hidden;
-
-			img {
-				transition: transform 100ms ease-in;
-
-				&:hover {
-					transform: scale(1.1);
-				}
-			}
-
 			span {
 				position: absolute;
 				bottom: $space-medium;
 				left: $space-medium;
 				color: #909090;
-				font-size: 22px;
-				z-index: 9999;
 			}
 		}
   }
@@ -88,25 +65,15 @@ export default {
 	name: 'Home',
 	data() {
 		return {
-			homepage: null,
-			works: [],
+			project: null
 		}
 	},
 	methods: {
-		getContent (uid) {
-			this.$prismic.client.query(
-				this.$prismic.Predicates.any('document.type', ["work", "homepage"]), 
-				{ orderings: '[my.work.order]' }
-			).then((response) => {
-				this.home = response.results
-				response.results.map(item => {
-					if (item.type === "work") {
-						this.works.push(item)
-					} else if (item.type === "homepage") {
-						this.homepage = item
-					}
-				})
-			})
+		getContent(uid) {
+			this.$prismic.client.getByUID('page', 'uid').then((document) => {
+				this.project = document
+				console.log(document);
+			});
 		}
 	},
 	created () {

@@ -56,8 +56,14 @@ $space-x-large: 28px;
 }
 
 a {
+  font-size: inherit;
   font-weight: 600;
   font-style: italic;
+  cursor: pointer;
+
+  &:hover {
+    color: #0054ff;
+  }
 }
 
 img {

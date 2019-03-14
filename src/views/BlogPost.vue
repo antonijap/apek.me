@@ -4,13 +4,20 @@
 		<div class="projects">
 			<div class="project" v-for="(work, index) in works" :key="index">
 				<span>{{ $prismic.richTextAsPlain(work.data.title) }}</span>
-				<a :href="`/project/${work.uid}`">
-					<img :src="work.data.promo_image.url"/>
-				</a>
+				<img :src="work.data.promo_image.url"/>
 			</div>
 		</div>
 		<div class="copy">
 			<prismic-rich-text v-if="homepage" :field="homepage.data.slot_1"/>
+		</div>
+		<div class="hobby">
+			<div class="projects">
+			<div class="project" v-for="(work, index) in works" :key="index">
+				<span>{{ $prismic.richTextAsPlain(work.data.title) }}</span>
+				<img :src="work.data.promo_image.url"/>
+			</div>
+		</div>
+			<prismic-rich-text v-if="homepage" :field="homepage.data.slot_2"/>
 		</div>
 	</div>
 </template>
@@ -28,7 +35,7 @@
   }
 
   @include xl {
-    width: 50%;
+    width: 60%;
 	}
 
   h1,
@@ -59,23 +66,10 @@
 
 		.project {
 			position: relative;
-			overflow: hidden;
-
-			img {
-				transition: transform 100ms ease-in;
-
-				&:hover {
-					transform: scale(1.1);
-				}
-			}
-
 			span {
 				position: absolute;
-				bottom: $space-medium;
-				left: $space-medium;
-				color: #909090;
-				font-size: 22px;
-				z-index: 9999;
+				bottom: $space-base;
+				left: $space-base;
 			}
 		}
   }
@@ -95,8 +89,7 @@ export default {
 	methods: {
 		getContent (uid) {
 			this.$prismic.client.query(
-				this.$prismic.Predicates.any('document.type', ["work", "homepage"]), 
-				{ orderings: '[my.work.order]' }
+				this.$prismic.Predicates.any('document.type', ['work', 'homepage'])
 			).then((response) => {
 				this.home = response.results
 				response.results.map(item => {
@@ -105,7 +98,7 @@ export default {
 					} else if (item.type === "homepage") {
 						this.homepage = item
 					}
-				})
+				})	
 			})
 		}
 	},
