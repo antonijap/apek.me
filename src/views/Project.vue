@@ -1,6 +1,9 @@
 <template>
 	<div class="wrapper">
 		<prismic-rich-text v-if="project" :field="project.data.title"/>
+		<prismic-rich-text v-if="project" :field="project.data.description"/>
+		<img v-if="project" :src="project.data.promo_image.url"/>
+		<prismic-rich-text v-if="project" :field="project.data.case"/>
 	</div>
 </template>
 
@@ -20,42 +23,43 @@
     width: 60%;
 	}
 
-  h1,
-  p {
+	h1 {
+		font-size: 42px;
+		text-align: center;
+	}
+
+	h2 {
+		text-align: center;
+		margin-bottom: 64px;
 		font-size: 22px;
-    margin-left: $space-x-large;
-    margin-right: $space-x-large;
+		font-weight: 400;
+		color: gray;
+	}
 
-    @include md {
-      margin-left: $space-x-large * 4;
-      margin-right: $space-x-large * 4;
-    }
-  }
+	h3 {
+		margin-top: 16px;
+		color: gray;
+		font-size: 22px;
+	}
+	
+	p {
+		font-size: 16px;
+		line-height: 1.8;
+		margin-left: 0;
+		margin-right: 0;
+		padding: 8px 0 24px;
+	}
 
-  .projects {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-column-gap: $space-base;
-    grid-row-gap: $space-base;
-    margin-bottom: $space-base * 8;
-    margin-top: $space-base * 8;
-
-    @include md {
-      grid-template-columns: 1fr 1fr;
-      margin-bottom: $space-base * 16;
-      margin-top: $space-base * 16;
-    }
-
-		.project {
-			position: relative;
-			span {
-				position: absolute;
-				bottom: $space-medium;
-				left: $space-medium;
-				color: #909090;
-			}
+	ul {
+		padding-left: 24px;
+		margin-top: 8px;
+		margin-bottom: 32px;
+		list-style-type: circle;
+		li {
+			line-height: 2.0;
+			padding-left: 8px;
 		}
-  }
+	}
 }
 </style>
 
@@ -70,14 +74,13 @@ export default {
 	},
 	methods: {
 		getContent(uid) {
-			this.$prismic.client.getByUID('page', 'uid').then((document) => {
+			this.$prismic.client.getByUID("work", uid).then((document) => {
 				this.project = document
-				console.log(document);
 			});
 		}
 	},
 	created () {
-		this.getContent(this.$route.params.uid);
+		this.getContent(this.$route.params.uid);		
 	},
 	beforeRouteUpdate (to, from, next) {
 		this.getContent(to.params.uid);
