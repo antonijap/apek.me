@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <prismic-rich-text v-if="project" :field="project.data.title"/>
-    <prismic-rich-text v-if="project" :field="project.data.description"/>
-    <img v-if="project" :src="project.data.promo_image.url">
-    <prismic-rich-text v-if="project" :field="project.data.case"/>
+    <prismic-rich-text v-if="post" :field="post.data.title"/>
+    <prismic-rich-text v-if="post" :field="post.data.intro"/>
+    <img v-if="post" :src="post.data.image.url">
+    <prismic-rich-text v-if="post" :field="post.data.content"/>
   </div>
 </template>
 
@@ -106,16 +106,16 @@
 
 <script>
 export default {
-  name: "Home",
+  name: "Post",
   data() {
     return {
-      project: null
+      post: null
     };
   },
   methods: {
     getContent(uid) {
-      this.$prismic.client.getByUID("work", uid).then(document => {
-        this.project = document;
+      this.$prismic.client.getByUID("post", uid).then(document => {
+        this.post = document;
       });
     }
   },

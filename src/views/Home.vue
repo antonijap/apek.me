@@ -1,21 +1,21 @@
 <template>
-	<div class="wrapper">
-		<prismic-rich-text v-if="homepage" :field="homepage.data.title"/>
-		<div class="projects">
-			<div class="project" v-for="(work, index) in works" :key="index">
-				<span>{{ $prismic.richTextAsPlain(work.data.title) }}</span>
-				<a :href="`/project/${work.uid}`">
-					<img :src="work.data.promo_image.url"/>
-				</a>
-			</div>
-		</div>
-		<div class="copy">
-			<prismic-rich-text v-if="homepage" :field="homepage.data.slot_1"/>
-		</div>
-	</div>
+  <div class="wrapper">
+    <prismic-rich-text v-if="homepage" :field="homepage.data.title"/>
+    <div class="projects">
+      <div class="project" v-for="(work, index) in works" :key="index">
+        <span>{{ $prismic.richTextAsPlain(work.data.title) }}</span>
+        <a :href="`/${work.uid}`" onclick="ga('send', 'event', [project], [click], [name]);">
+          <img :src="work.data.promo_image.url">
+        </a>
+      </div>
+    </div>
+    <div class="copy">
+      <prismic-rich-text v-if="homepage" :field="homepage.data.slot_1"/>
+    </div>
+  </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/scss/main.scss";
 
 .wrapper {
@@ -28,18 +28,18 @@
   }
 
   @include xl {
-    width: 50%;
-	}
+    width: 60%;
+  }
 
-  h1,
-  p {
-		font-size: 22px;
-    margin-left: $space-x-large;
-    margin-right: $space-x-large;
+  /deep/ p {
+    font-size: 22px;
+    margin-left: $space-x-medium;
+    margin-right: $space-x-medium;
+    margin-bottom: $space-medium;
 
     @include md {
-      margin-left: $space-x-large * 4;
-      margin-right: $space-x-large * 4;
+      margin-left: $space-x-medium * 4;
+      margin-right: $space-x-medium * 4;
     }
   }
 
@@ -57,27 +57,27 @@
       margin-top: $space-base * 16;
     }
 
-		.project {
-			position: relative;
-			overflow: hidden;
+    .project {
+      position: relative;
+      overflow: hidden;
 
-			img {
-				transition: transform 100ms ease-in;
+      img {
+        transition: transform 100ms ease-in;
 
-				&:hover {
-					transform: scale(1.1);
-				}
-			}
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
 
-			span {
-				position: absolute;
-				bottom: $space-medium;
-				left: $space-medium;
-				color: #909090;
-				font-size: 22px;
-				z-index: 9999;
-			}
-		}
+      span {
+        position: absolute;
+        bottom: $space-medium;
+        left: $space-medium;
+        color: #ccc;
+        font-size: 22px;
+        z-index: 9999;
+      }
+    }
   }
 }
 </style>
@@ -85,36 +85,38 @@
 
 <script>
 export default {
-	name: 'Home',
-	data() {
-		return {
-			homepage: null,
-			works: [],
-		}
-	},
-	methods: {
-		getContent (uid) {
-			this.$prismic.client.query(
-				this.$prismic.Predicates.any('document.type', ["work", "homepage"]), 
-				{ orderings: '[my.work.order]' }
-			).then((response) => {
-				this.home = response.results
-				response.results.map(item => {
-					if (item.type === "work") {
-						this.works.push(item)
-					} else if (item.type === "homepage") {
-						this.homepage = item
-					}
-				})
-			})
-		}
-	},
-	created () {
-		this.getContent(this.$route.params.uid);
-	},
-	beforeRouteUpdate (to, from, next) {
-		this.getContent(to.params.uid);
-		next();
-	}
-}
+  name: "Home",
+  data() {
+    return {
+      homepage: null,
+      works: []
+    };
+  },
+  methods: {
+    getContent(uid) {
+      this.$prismic.client
+        .query(
+          this.$prismic.Predicates.any("document.type", ["work", "homepage"]),
+          { orderings: "[my.work.order]" }
+        )
+        .then(response => {
+          this.home = response.results;
+          response.results.map(item => {
+            if (item.type === "work") {
+              this.works.push(item);
+            } else if (item.type === "homepage") {
+              this.homepage = item;
+            }
+          });
+        });
+    }
+  },
+  created() {
+    this.getContent(this.$route.params.uid);
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.getContent(to.params.uid);
+    next();
+  }
+};
 </script>

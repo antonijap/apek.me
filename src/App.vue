@@ -6,17 +6,18 @@
 </template>
 
 <script>
-import Footer from './components/Footer.vue'
+import Footer from "./components/Footer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Footer
   }
-}
+};
 </script>
 
-<style>
+<style lang="scss">
 @import "./assets/css/resetr.css";
 @import "./assets/css/prismic-edit-button.css";
+@import "./assets/scss/main.scss";
 </style>

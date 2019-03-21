@@ -10,7 +10,7 @@ $space-base: 8px;
 $space-medium: 16px;
 $space-x-medium: 24px;
 $space-large: 32px;
-$space-x-large: 28px;
+$space-x-large: 48px;
 
 // Mixins
 @mixin xs {
@@ -47,8 +47,6 @@ $space-x-large: 28px;
   }
 }
 
-// Extra large devices
-
 * {
   font-family: bio-sans, sans-serif;
   line-height: 1.6;
@@ -60,6 +58,7 @@ a {
   font-weight: 600;
   font-style: italic;
   cursor: pointer;
+  transition: color 340ms ease-out;
 
   &:hover {
     color: #0054ff;
