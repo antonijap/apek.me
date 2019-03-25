@@ -21,5 +21,9 @@ export default function (doc) {
     return doc.uid
   }
 
+  if (doc.type === 'project') {
+    return doc.uid
+  }
+
   return '/not-found'
 }
