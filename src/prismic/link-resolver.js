@@ -4,6 +4,7 @@
  */
 
 export default function (doc) {
+
   if (doc.isBroken) {
     return '/not-found'
   }
@@ -12,8 +13,12 @@ export default function (doc) {
     return '/'
   }
 
-  if (doc.type === 'page') {
-    return '/page/' + doc.uid
+  if (doc.type === 'blog') {
+    return doc.uid
+  }
+
+  if (doc.type === 'work') {
+    return doc.uid
   }
 
   return '/not-found'
