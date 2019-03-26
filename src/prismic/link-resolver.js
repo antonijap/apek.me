@@ -9,7 +9,7 @@ export default function (doc) {
     return '/not-found'
   }
 
-  if (doc.type === 'home') {
+  if (doc.type === 'homepage') {
     return '/'
   }
 
