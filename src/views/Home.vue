@@ -106,7 +106,6 @@ export default {
               this.works.push(item);
             } else if (item.type === "homepage") {
               this.homepage = item;
-              console.log(item);
             }
           });
         });
