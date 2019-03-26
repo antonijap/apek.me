@@ -4,7 +4,7 @@
     <div class="projects">
       <div class="project" v-for="(work, index) in works" :key="index">
         <span>{{ $prismic.richTextAsPlain(work.data.title) }}</span>
-        <a :href="`/${work.uid}`" onclick="ga('send', 'event', [project], [click], [name]);">
+        <a :href="`/${work.uid}`">
           <img :src="work.data.promo_image.url">
         </a>
       </div>

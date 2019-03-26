@@ -7,7 +7,7 @@
     <prismic-rich-text v-if="blog" :field="blog.data.intro"/>
     <div class="posts">
       <div class="post" v-for="(post, index) in posts" :key="index">
-        <a :href="`/blog/${post.uid}`" onclick="ga('send', 'event', [project], [click], [name]);">
+        <a :href="`/blog/${post.uid}`">
           <img v-if="post.data.image" :src="post.data.image.url">
           <h2>{{ $prismic.richTextAsPlain(post.data.title) }}</h2>
           <prismic-rich-text v-if="blog" :field="post.data.intro"/>

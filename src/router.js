@@ -16,6 +16,11 @@ export default new Router({
     component: Home
   },
   {
+    path: '/:uid',
+    name: 'project',
+    component: Project
+  },
+  {
     path: '/blog/:uid',
     name: 'blog-post',
     component: Post
@@ -24,11 +29,6 @@ export default new Router({
     path: '/blog',
     name: 'blog',
     component: Blog
-  },
-  {
-    path: '/:uid',
-    name: 'project',
-    component: Project
   },
   {
     path: '/not-found',
