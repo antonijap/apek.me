@@ -17,7 +17,6 @@ export default function (doc) {
   }
 
   if (doc.type === 'work') {
-    console.log(doc.type, "link-resolver");
     return doc.uid
   }
 
