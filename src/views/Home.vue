@@ -4,9 +4,9 @@
     <div class="projects">
       <div class="project" v-for="(work, index) in works" :key="index">
         <span>{{ $prismic.richTextAsPlain(work.data.title) }}</span>
-        <a :href="`/${work.uid}`">
+        <router-link :href="`/${work.uid}`">
           <img :src="work.data.promo_image.url">
-        </a>
+        </router-link>
       </div>
     </div>
     <div class="copy">
