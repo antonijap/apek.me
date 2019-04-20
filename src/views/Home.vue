@@ -3,14 +3,22 @@
     <prismic-rich-text v-if="homepage" :field="homepage.data.title"/>
     <div class="projects">
       <div class="project" v-for="(work, index) in works" :key="index">
-        <span>{{ $prismic.richTextAsPlain(work.data.title) }}</span>
-        <router-link :href="`/${work.uid}`">
-          <img :src="work.data.promo_image.url">
+        <router-link :to="`/${work.uid}`">
+          <div class="rectangle">
+            <img :src="work.data.promo_image.url">
+          </div>
+          <h2>{{ $prismic.richTextAsPlain(work.data.title) }}</h2>
+          <h3>{{ $prismic.richTextAsPlain(work.data.description) }}</h3>
         </router-link>
       </div>
     </div>
-    <div class="copy">
+    <div class="more">
       <prismic-rich-text v-if="homepage" :field="homepage.data.slot_1"/>
+      <div>
+        <h3>Latest From Blog</h3>
+        <h4>Make a design system with Figma</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, quos.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -23,23 +31,28 @@
   margin: 4em auto;
 
   @include md {
-    width: 80%;
+    // width: 70%;
+    width: 960px;
     margin: 10em auto;
   }
 
   @include xl {
-    width: 60%;
+    // width: 40%;
   }
 
   /deep/ p {
-    font-size: 22px;
-    margin-left: $space-x-medium;
-    margin-right: $space-x-medium;
+    font-size: 16px;
     margin-bottom: $space-medium;
+    line-height: 1.5;
+  }
+
+  /deep/ h1 {
+    font-size: 22px;
+    margin-bottom: $space-medium;
+    line-height: 1.5;
 
     @include md {
-      margin-left: $space-x-medium * 4;
-      margin-right: $space-x-medium * 4;
+      font-size: 32px;
     }
   }
 
@@ -59,25 +72,68 @@
 
     .project {
       position: relative;
-      overflow: hidden;
+      // overflow: hidden;
 
-      img {
-        transition: transform 100ms ease-in;
-
+      a {
         &:hover {
-          transform: scale(1.1);
+          .rectangle {
+            // background-color: #9d72c9;
+          }
         }
       }
 
-      span {
-        position: absolute;
-        bottom: $space-medium;
-        left: $space-medium;
-        color: #ccc;
-        font-size: 22px;
-        z-index: 9999;
+      /deep/ p {
+        font-family: Spectral;
+      }
+
+      img {
+        transition: transform 300ms ease-out;
+
+        &:hover {
+          transform: translateY(-10px);
+        }
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-top: $space-medium;
+        margin-bottom: $space-base;
+      }
+
+      h3 {
+        font-size: 16px;
+        font-family: Spectral;
+        font-weight: 400;
+        letter-spacing: -0.5px;
+      }
+
+      .rectangle {
+        background-color: #c299ea;
+        border-radius: 5px;
       }
     }
+  }
+}
+
+.more {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: $space-large;
+  grid-row-gap: $space-base;
+
+  /deep/ h3 {
+    color: #888888;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: $space-medium;
+  }
+
+  /deep/ h4 {
+    font-family: Spectral;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: $space-base;
   }
 }
 </style>

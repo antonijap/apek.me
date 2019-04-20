@@ -9,10 +9,12 @@
   <meta name="description" content="Vue.js starter project with content managed in Prismic">
   <meta name="author" content="Prismic">
   <link rel="icon" href="<%= BASE_URL %>favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Spectral:400,500,600" rel="stylesheet">
   <script>
     window.prismic = {
       endpoint: 'https://apek.prismic.io/api/v2'
     }
+
   </script>
   <script src="https://static.cdn.prismic.io/prismic.min.js"></script>
   <link rel="stylesheet" href="https://use.typekit.net/dym4dvl.css">
@@ -30,10 +32,14 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58710414-3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
     gtag('js', new Date());
 
     gtag('config', 'UA-58710414-3');
+
   </script>
 </body>
 
