@@ -68,13 +68,15 @@
   }
 
   /deep/ p {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.8;
     margin-left: 0;
     margin-right: 0;
     padding: 8px 0 24px;
     margin-left: $space-x-medium;
     margin-right: $space-x-medium;
+    font-family: Spectral;
+    letter-spacing: -0.2px;
 
     @include md {
       margin-left: $space-x-medium * 4;

@@ -10,6 +10,8 @@
     </div>
     <div class="more">
       <prismic-rich-text v-if="homepage" :field="homepage.data.slot_1"/>
+      <iframe src="https://www.youtube.com/embed/JHddHz69B7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/JHddHz69B7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
 </template>
