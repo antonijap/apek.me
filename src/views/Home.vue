@@ -10,8 +10,20 @@
     </div>
     <div class="more">
       <prismic-rich-text v-if="homepage" :field="homepage.data.slot_1"/>
-      <iframe src="https://www.youtube.com/embed/JHddHz69B7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/JHddHz69B7E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="videos">
+        <iframe
+          src="https://www.youtube.com/embed/JHddHz69B7E"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          src="https://www.youtube.com/embed/JHddHz69B7E"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   </div>
 </template>
@@ -38,17 +50,12 @@
     font-size: 18px;
     margin-bottom: $space-medium;
     line-height: 1.8;
+    font-weight: 500;
   }
 
   .projects {
     margin-bottom: $space-base * 8;
     margin-top: $space-base * 8;
-
-    @include md {
-      grid-template-columns: 1fr 1fr;
-      margin-bottom: $space-base * 8;
-      margin-top: $space-base * 8;
-    }
 
     .project {
       h2 {
@@ -67,6 +74,18 @@
     text-transform: uppercase;
     font-weight: 500;
     margin-bottom: $space-medium;
+  }
+
+  .videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: $space-medium;
+    background: yellow;
+
+    iframe {
+      width: 100%;
+      height: 270px;
+    }
   }
 }
 </style>
