@@ -4,7 +4,11 @@
     <div class="projects">
       <div class="project" v-for="(work, index) in works" :key="index">
         <router-link :to="`/${work.uid}`">
-          <h2>{{ $prismic.richTextAsPlain(work.data.title) }} — {{ $prismic.richTextAsPlain(work.data.description) }}</h2>
+          <h2>{{ $prismic.richTextAsPlain(work.data.title) }}</h2>
+        </router-link>
+        <p>{{ $prismic.richTextAsPlain(work.data.description) }}</p>
+        <router-link :to="`/${work.uid}`">
+          <a href="">Read Story</a>
         </router-link>
       </div>
     </div>
@@ -44,24 +48,38 @@
     font-size: 18px;
     margin-bottom: $space-medium;
     line-height: 1.8;
+    color: #1134C7;
   }
 
   /deep/ h1 {
-    font-size: 18px;
     margin-bottom: $space-medium;
-    line-height: 1.8;
     font-weight: 500;
+    color: #1134C7;
+    font-size: 24px;
+    line-height: 160%;
+    margin: 0 20% $space-x-large;
+    text-align: center;
   }
 
   .projects {
     margin-bottom: $space-base * 8;
     margin-top: $space-base * 8;
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    grid-column-gap: $space-large;
+    grid-row-gap: $space-large;
 
     .project {
+      background: linear-gradient(30.88deg, #F4F6FE 28.67%, rgba(255, 255, 255, 0) 86.35%);
+      border: 2px solid rgba(149, 169, 247, 0.5);
+      padding: 16px;
       h2 {
         font-size: 18px;
-        margin-top: $space-medium;
         margin-bottom: $space-base;
+        color: #1134C7;
+      }
+      a {
+        color: #1134C7;
       }
     }
   }
