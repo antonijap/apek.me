@@ -10,7 +10,7 @@ $space-base: 8px;
 $space-medium: 16px;
 $space-x-medium: 24px;
 $space-large: 32px;
-$space-x-large: 48px;
+$space-x-large: 40px;
 
 // Mixins
 @mixin xs {
@@ -48,9 +48,13 @@ $space-x-large: 48px;
 }
 
 * {
-  font-family: bio-sans, sans-serif;
+  font-family: mrs-eaves-xl-serif, serif;
   line-height: 1.8;
   font-size: 18px;
+}
+
+html {
+  background: black;
 }
 
 strong {
@@ -65,7 +69,7 @@ a {
   transition: color 340ms ease-out;
 
   &:hover {
-    color: #0054ff;
+    color: white;
   }
 }
 

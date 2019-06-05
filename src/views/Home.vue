@@ -5,29 +5,15 @@
       <div class="project" v-for="(work, index) in works" :key="index">
         <router-link :to="`/${work.uid}`">
           <h2>{{ $prismic.richTextAsPlain(work.data.title) }}</h2>
-        </router-link>
-        <p>{{ $prismic.richTextAsPlain(work.data.description) }}</p>
-        <router-link :to="`/${work.uid}`">
-          <a href="">Read Story</a>
+          <p>{{ $prismic.richTextAsPlain(work.data.description) }}</p>
         </router-link>
       </div>
     </div>
-    <div class="more">
-      <prismic-rich-text v-if="homepage" :field="homepage.data.slot_1"/>
-      <div class="videos">
-        <iframe
-          src="https://www.youtube.com/embed/JHddHz69B7E"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-        <iframe
-          src="https://www.youtube.com/embed/JHddHz69B7E"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
+    <div class="ctas">
+      <a href="" class="ghost">Resume</a>
+      <a href="">My Channel</a>
+      <a href="">Tweet me!</a>
+      <a href="mailto:hi@apek.me">Hire me</a>
     </div>
   </div>
 </template>
@@ -48,61 +34,63 @@
     font-size: 18px;
     margin-bottom: $space-medium;
     line-height: 1.8;
-    color: #1134C7;
+    color: #F9F6F0;
   }
 
   /deep/ h1 {
-    margin-bottom: $space-medium;
-    font-weight: 500;
-    color: #1134C7;
-    font-size: 24px;
-    line-height: 160%;
-    margin: 0 20% $space-x-large;
-    text-align: center;
+    color: #F9F6F0;
+    font-size: 54px;
+    line-height: 130%;
+  }
+
+  /deep/ a {
+    color: #BAA988;
+    transition: all 700ms;
+    &:hover {
+      opacity: 0.5;
+    }
   }
 
   .projects {
     margin-bottom: $space-base * 8;
-    margin-top: $space-base * 8;
+    margin-top: $space-x-large * 3;
     display: grid;
     grid-template-columns:  1fr 1fr;
-    grid-column-gap: $space-large;
-    grid-row-gap: $space-large;
+    grid-row-gap: $space-x-large;
 
     .project {
-      background: linear-gradient(30.88deg, #F4F6FE 28.67%, rgba(255, 255, 255, 0) 86.35%);
-      border: 2px solid rgba(149, 169, 247, 0.5);
-      padding: 16px;
       h2 {
-        font-size: 18px;
+        font-size: 20px;
         margin-bottom: $space-base;
-        color: #1134C7;
+        color: #F9F6F0;
+        font-family: bio-sans, sans-serif;
+        line-height: 100%;
       }
-      a {
-        color: #1134C7;
+      p {
+        font-size: 18px;
+        line-height: 160%;
       }
     }
   }
-}
 
-.more {
-  /deep/ h3 {
-    color: #888888;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-bottom: $space-medium;
-  }
-
-  .videos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: $space-medium;
-    background: yellow;
-
-    iframe {
-      width: 100%;
-      height: 270px;
+  .ctas {
+    display: flex;
+    align-items: center;
+    .ghost {
+      padding: 4px 16px;
+      border: 1px solid #F9F6F0;
+      text-align: center;
+      transition: all 700ms;
+      &:hover {
+        background: #F9F6F0;
+        color: #141412;
+      }
+    }
+    a {
+      color: #F9F6F0;
+    }
+    a:not(:first-child) {
+      margin-left: $space-x-medium;
     }
   }
 }
