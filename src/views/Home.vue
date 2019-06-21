@@ -1,21 +1,21 @@
 <template>
-  <div class="wrapper">
-    <prismic-rich-text v-if="homepage" :field="homepage.data.title"/>
-    <div class="projects">
-      <div class="project" v-for="(work, index) in works" :key="index">
-        <router-link :to="`/${work.uid}`">
-          <h2>{{ $prismic.richTextAsPlain(work.data.title) }}</h2>
-          <p>{{ $prismic.richTextAsPlain(work.data.description) }}</p>
-        </router-link>
+    <div class="wrapper">
+      <prismic-rich-text v-if="homepage" :field="homepage.data.title"/>
+      <div class="projects">
+        <div class="project" v-for="(work, index) in works" :key="index">
+          <router-link :to="`/${work.uid}`">
+            <h2>{{ $prismic.richTextAsPlain(work.data.title) }}</h2>
+            <p>{{ $prismic.richTextAsPlain(work.data.description) }}</p>
+          </router-link>
+        </div>
+      </div>
+      <div class="ctas" v-if="loaded">
+        <a href="" class="ghost">Check Resume</a>
+        <a href="">My Channel</a>
+        <a href="">Tweet me!</a>
+        <a href="mailto:antonijapek@gmail.com">Hire me</a>
       </div>
     </div>
-    <div class="ctas">
-      <a href="" class="ghost">Resume</a>
-      <a href="">My Channel</a>
-      <a href="">Tweet me!</a>
-      <a href="mailto:hi@apek.me">Hire me</a>
-    </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -93,6 +93,7 @@
       margin-left: $space-x-medium;
     }
   }
+
 }
 </style>
 
@@ -103,7 +104,8 @@ export default {
   data() {
     return {
       homepage: null,
-      works: []
+      works: [],
+      loaded: false
     };
   },
   methods: {
@@ -120,6 +122,7 @@ export default {
               this.works.push(item);
             } else if (item.type === "homepage") {
               this.homepage = item;
+              this.loaded = true
             }
           });
         });

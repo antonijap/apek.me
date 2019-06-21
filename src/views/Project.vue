@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper">
     <prismic-rich-text v-if="project" :field="project.data.title"/>
-    <prismic-rich-text v-if="project" :field="project.data.description"/>
-    <img v-if="project" :src="project.data.promo_image.url">
+    <h2>Entertainment Platform for Singers</h2>
+    <!-- <prismic-rich-text v-if="project" :field="project.data.description"/> -->
+    <!-- <img v-if="project" :src="project.data.promo_image.url"> -->
     <prismic-rich-text v-if="project" :field="project.data.case"/>
   </div>
 </template>
@@ -28,8 +29,11 @@
   }
 
   /deep/ h1 {
-    font-size: 42px;
-    text-align: center;
+    font-size: 80px;
+    margin-bottom: $space-base;
+    line-height: 1.3;
+    color: #F9F6F0;
+    text-align: left;
     margin-left: $space-x-medium;
     margin-right: $space-x-medium;
 
@@ -40,11 +44,11 @@
   }
 
   /deep/ h2 {
-    text-align: center;
-    margin-bottom: 64px;
-    font-size: 22px;
-    font-weight: 400;
-    color: gray;
+    font-size: 48px;
+    margin-bottom: $space-x-large * 2;
+    line-height: 1;
+    color: #b1b1b1;;
+    text-align: left;
     margin-left: $space-x-medium;
     margin-right: $space-x-medium;
 
@@ -55,9 +59,11 @@
   }
 
   /deep/ h3 {
+    font-size: 32px;
+    margin-bottom: $space-base;
+    line-height: 1.8;
+    color: #b1b1b1;
     margin-top: 16px;
-    color: gray;
-    font-size: 22px;
     margin-left: $space-x-medium;
     margin-right: $space-x-medium;
 
@@ -67,11 +73,19 @@
     }
   }
 
+  /deep/ a {
+    color: #BAA988;
+    transition: all 700ms;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
   /deep/ p {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: $space-medium;
     line-height: 1.8;
-    margin-left: 0;
-    margin-right: 0;
+    color: #F9F6F0;
     padding: 8px 0 24px;
     margin-left: $space-x-medium;
     margin-right: $space-x-medium;
@@ -91,6 +105,7 @@
     list-style-type: circle;
     margin-left: $space-x-medium;
     margin-right: $space-x-medium;
+    color: #F9F6F0;
 
     @include md {
       margin-left: $space-x-medium * 4;
