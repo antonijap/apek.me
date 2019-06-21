@@ -67,7 +67,7 @@
   /deep/ h3 {
     font-size: 32px;
     margin-bottom: $space-base;
-    line-height: 1.8;
+    line-height: 1;
     color: #b1b1b1;
     margin-top: 16px;
     margin-left: $space-x-medium;
@@ -91,7 +91,7 @@
   /deep/ p {
     font-size: 18px;
     margin-bottom: $space-medium;
-    line-height: 1.8;
+    line-height: 1.6;
     color: #F9F6F0;
     padding: 8px 0 24px;
     margin-left: $space-x-medium;
