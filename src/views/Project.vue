@@ -1,11 +1,10 @@
 <template>
-  <div class="wrapper">
-    <prismic-rich-text v-if="project" :field="project.data.title"/>
-    <h2>Entertainment Platform for Singers</h2>
-    <!-- <prismic-rich-text v-if="project" :field="project.data.description"/> -->
-    <!-- <img v-if="project" :src="project.data.promo_image.url"> -->
-    <prismic-rich-text v-if="project" :field="project.data.case"/>
-  </div>
+		<div class="wrapper">
+			<prismic-rich-text v-if="project" :field="project.data.title"/>
+			<prismic-rich-text v-if="project" :field="project.data.description" class="subtitle"/>
+			<!-- <img v-if="project" :src="project.data.promo_image.url"> -->
+			<prismic-rich-text v-if="project" :field="project.data.case"/>
+		</div>
 </template>
 
 <style lang="scss" scoped>
@@ -24,8 +23,14 @@
     width: 60%;
   }
 
-  &:first-child img {
-    margin-bottom: $space-x-large;
+  /deep/ .subtitle {
+    h3 {
+      font-size: 48px;
+      margin-bottom: $space-x-large * 2;
+      line-height: 1;
+      color: #b1b1b1;
+      text-align: left;
+    }
   }
 
   /deep/ h1 {
@@ -47,7 +52,8 @@
     font-size: 48px;
     margin-bottom: $space-x-large * 2;
     line-height: 1;
-    color: #b1b1b1;;
+    color: #b1b1b1;
+    ;
     text-align: left;
     margin-left: $space-x-medium;
     margin-right: $space-x-medium;
@@ -76,6 +82,7 @@
   /deep/ a {
     color: #BAA988;
     transition: all 700ms;
+
     &:hover {
       opacity: 0.5;
     }
@@ -123,25 +130,25 @@
 
 <script>
 export default {
-  name: "Home",
-  data() {
-    return {
-      project: null
-    };
-  },
-  methods: {
-    getContent(uid) {
-      this.$prismic.client.getByUID("work", uid).then(document => {
-        this.project = document;
-      });
-    }
-  },
-  created() {
-    this.getContent(this.$route.params.uid);
-  },
-  beforeRouteUpdate(to, from, next) {
-    this.getContent(to.params.uid);
-    next();
-  }
+		name: "Home",
+		data() {
+				return {
+						project: null
+				};
+		},
+		methods: {
+				getContent(uid) {
+						this.$prismic.client.getByUID("work", uid).then(document => {
+								this.project = document;
+						});
+				}
+		},
+		created() {
+				this.getContent(this.$route.params.uid);
+		},
+		beforeRouteUpdate(to, from, next) {
+				this.getContent(to.params.uid);
+				next();
+		}
 };
 </script>
