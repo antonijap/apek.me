@@ -10,10 +10,10 @@
         </div>
       </div>
       <div class="ctas" v-if="loaded">
-        <a href="" class="ghost">Check Resume</a>
-        <a href="">My Channel</a>
-        <a href="">Tweet me!</a>
-        <a href="mailto:antonijapek@gmail.com">Hire me</a>
+        <a target="blank" href="https://drive.google.com/open?id=1mC70qO3suwVNkO1KLRFI7ULSlbh9zbkw" class="ghost">Check Resume</a>
+        <a target="blank" href="https://www.youtube.com/channel/UCCgaKuRMOV_dH3kuaaHPzvA">My Channel</a>
+        <a target="blank" href="https://twitter.com/captdesign">Tweet me!</a>
+        <a target="blank" href="mailto:antonijapek@gmail.com">Hire me</a>
       </div>
     </div>
 </template>
