@@ -12,6 +12,14 @@ $space-x-medium: 24px;
 $space-large: 32px;
 $space-x-large: 40px;
 
+@font-face {
+  font-family: 'Hanken Grotesk Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url("/assets/HKGrotesk-Regular.woff") format("woff"),
+       url("/assets/HKGrotesk-Regular.woff2") format("woff2"),
+}
+
 // Mixins
 @mixin xs {
   @media (min-width: #{$screen-xs-min}) {
@@ -48,18 +56,10 @@ $space-x-large: 40px;
 }
 
 * {
-  font-family: mrs-eaves-xl-serif, serif;
-  line-height: 1.8;
-  font-size: 18px;
-}
-
-html {
-  background: black;
-}
-
-strong {
-  font-weight: 600;
-  font-size: inherit;
+  line-height: 1.5;
+  font-size: 16px;
+  font-family: 'Hanken Grotesk Regular', serif;
+  color: #2B2A25;
 }
 
 a {
@@ -67,15 +67,15 @@ a {
   font-weight: 600;
   cursor: pointer;
   transition: color 340ms ease-out;
-
-  &:hover {
-    color: white;
-  }
+  font-weight: 600;
+  color: #FF2E00;
 }
 
 img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px;
 }
+
+
+

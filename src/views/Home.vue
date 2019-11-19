@@ -1,19 +1,33 @@
 <template>
-    <div class="wrapper">
-      <prismic-rich-text v-if="homepage" :field="homepage.data.title"/>
-      <div class="projects">
-        <div class="project" v-for="(work, index) in works" :key="index">
-          <router-link :to="`/${work.uid}`">
-            <h2>{{ $prismic.richTextAsPlain(work.data.title) }}</h2>
-            <p>{{ $prismic.richTextAsPlain(work.data.description) }}</p>
-          </router-link>
-        </div>
+    <div>
+      <div class="container">
+        <prismic-rich-text v-if="homepage" :field="homepage.data.title"/>
       </div>
-      <div class="ctas" v-if="loaded">
-        <a target="blank" href="https://drive.google.com/open?id=1mC70qO3suwVNkO1KLRFI7ULSlbh9zbkw" class="ghost">Check Resume</a>
-        <a target="blank" href="https://www.youtube.com/channel/UCCgaKuRMOV_dH3kuaaHPzvA">My Channel</a>
-        <a target="blank" href="https://twitter.com/captdesign">Tweet me!</a>
-        <a target="blank" href="mailto:antonijapek@gmail.com">Hire me</a>
+
+      <img src="../assets/img/antonijapek.jpg" alt="Antonija Pek" class="image">
+
+      <div class="container" style="grid-template-columns: 2;">
+        <prismic-rich-text class="grid-child" v-if="homepage" :field="homepage.data.slot_1"/>
+        <div class="grid-child">
+          <prismic-rich-text v-if="homepage" :field="homepage.data.slot_2"/>
+          <prismic-rich-text v-if="homepage" :field="homepage.data.slot_2"/>
+          <prismic-rich-text v-if="homepage" :field="homepage.data.slot_2"/>
+        </div>
+
+        <!-- <div class="projects">
+          <div class="project" v-for="(work, index) in works" :key="index">
+            <router-link :to="`/${work.uid}`">
+              <h2>{{ $prismic.richTextAsPlain(work.data.title) }}</h2>
+            </router-link>
+          </div>
+        </div> -->
+
+        <!-- <div class="ctas" v-if="loaded">
+          <a target="blank" href="https://drive.google.com/open?id=1mC70qO3suwVNkO1KLRFI7ULSlbh9zbkw">Check Resume</a>
+          <a target="blank" href="https://www.youtube.com/channel/UCCgaKuRMOV_dH3kuaaHPzvA">My Channel</a>
+          <a target="blank" href="https://twitter.com/captdesign">Tweet me!</a>
+          <a target="blank" href="mailto:antonijapek@gmail.com">Hire me</a>
+        </div> -->
       </div>
     </div>
 </template>
@@ -21,76 +35,102 @@
 <style lang="scss" scoped>
 @import "../assets/scss/main.scss";
 
-.wrapper {
+.image {
+  width: 80%;
+  margin: 5em auto 5em 0;
+}
+
+.flex-child {
+  margin: auto;
+
+  strong {
+    opacity: 0.5;
+  }
+
+  ul {
+    li {
+      list-style-type: none;
+    }
+  }
+}
+
+.container {
   width: 90%;
   margin: 4em auto;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
 
   @include md {
-    width: 960px;
-    margin: 10em auto;
+    width: 60%;
+    margin: 5em auto;
+  }
+
+  @include lg {
+    
+  }
+
+  @include xl {
+    
   }
 
   /deep/ p {
     font-size: 18px;
     margin-bottom: $space-medium;
     line-height: 1.8;
-    color: #F9F6F0;
   }
 
   /deep/ h1 {
-    color: #F9F6F0;
-    font-size: 54px;
-    line-height: 130%;
-  }
-
-  /deep/ a {
-    color: #BAA988;
-    transition: all 700ms;
-    &:hover {
-      opacity: 0.5;
-    }
+    font-size: 48px;
+    line-height: 150%;
   }
 
   .projects {
-    margin-bottom: $space-base * 8;
-    margin-top: $space-x-large * 3;
-    display: grid;
-    grid-template-columns:  1fr 1fr;
-    grid-row-gap: $space-x-large;
+    margin-bottom: $space-base;
+    margin-top: $space-x-large;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
 
     .project {
       h2 {
-        font-size: 20px;
-        margin-bottom: $space-base;
-        color: #F9F6F0;
-        font-family: bio-sans, sans-serif;
-        line-height: 100%;
+        color: black;
+        padding: $space-base;
+        display: block;
       }
       p {
         font-size: 18px;
         line-height: 160%;
       }
     }
+
+    @include md {
+      flex-direction: row;
+      .project {
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+    }
   }
 
   .ctas {
     display: flex;
-    align-items: center;
-    .ghost {
-      padding: 4px 16px;
-      border: 1px solid #F9F6F0;
-      text-align: center;
-      transition: all 700ms;
-      &:hover {
-        background: #F9F6F0;
-        color: #141412;
-      }
-    }
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
     a {
-      color: #F9F6F0;
+      color: black;
+      padding: $space-base;
+      display: block;
     }
-    a:not(:first-child) {
-      margin-left: $space-x-medium;
+    @include md {
+      flex-direction: row;
+      a {
+        &:first-child {
+          padding-left: 0;
+        }
+      }
     }
   }
 
