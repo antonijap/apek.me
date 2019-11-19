@@ -6,9 +6,9 @@
 
       <img src="../assets/img/antonijapek.jpg" alt="Antonija Pek" class="image">
 
-      <div class="container" style="grid-template-columns: 2;">
-        <prismic-rich-text class="grid-child" v-if="homepage" :field="homepage.data.slot_1"/>
-        <div class="grid-child">
+      <div class="container grid">
+        <prismic-rich-text v-if="homepage" :field="homepage.data.slot_1"/>
+        <div class="grid-sidebar">
           <prismic-rich-text v-if="homepage" :field="homepage.data.slot_2"/>
           <prismic-rich-text v-if="homepage" :field="homepage.data.slot_2"/>
           <prismic-rich-text v-if="homepage" :field="homepage.data.slot_2"/>
@@ -54,11 +54,21 @@
   }
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8%;
+}
+
 .container {
   width: 90%;
   margin: 4em auto;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
+
+  .grid-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+  }
 
   @include md {
     width: 60%;
