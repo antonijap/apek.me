@@ -24,28 +24,13 @@
           </div>
 
           <div>
-            <p class="list-title">Let's connect</p>
+            <p class="list-title" style="margin-top: 8px;">Let's connect</p>
             <a target="blank" href="https://www.linkedin.com/in/antonijapek/">Linkedin</a>
             <a target="blank" href="https://twitter.com/captdesign">Twitter</a>
             <a target="blank" href="https://www.youtube.com/channel/UCCgaKuRMOV_dH3kuaaHPzvA">Youtube</a>
             <a target="blank" href="mailto:antonijapek@gmail.com">Email</a>
           </div>
         </div>
-
-        <!-- <div class="projects">
-          <div class="project" v-for="(work, index) in works" :key="index">
-            <router-link :to="`/${work.uid}`">
-              <h2>{{ $prismic.richTextAsPlain(work.data.title) }}</h2>
-            </router-link>
-          </div>
-        </div> -->
-
-        <!-- <div class="ctas" v-if="loaded">
-          <a target="blank" href="https://drive.google.com/open?id=1mC70qO3suwVNkO1KLRFI7ULSlbh9zbkw">Check Resume</a>
-          <a target="blank" href="https://www.youtube.com/channel/UCCgaKuRMOV_dH3kuaaHPzvA">My Channel</a>
-          <a target="blank" href="https://twitter.com/captdesign">Tweet me!</a>
-          <a target="blank" href="mailto:antonijapek@gmail.com">Hire me</a>
-        </div> -->
       </div>
     </div>
 </template>
@@ -106,6 +91,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 8px;
+    align-self: start;
 
     div {
       align-self: start;
@@ -133,7 +119,7 @@
   }
 
   @include lg {
-    width: 50%;
+    width: 55%;
     margin: 5em auto;
   }
 

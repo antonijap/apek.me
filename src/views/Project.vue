@@ -20,7 +20,7 @@
   }
 
   @include xl {
-    width: 60%;
+    width: 70%;
   }
 
   /deep/ .subtitle {
@@ -28,7 +28,6 @@
       font-size: 48px;
       margin-bottom: $space-x-large * 2;
       line-height: 1;
-      color: #b1b1b1;
       text-align: left;
     }
   }
@@ -37,7 +36,6 @@
     font-size: 80px;
     margin-bottom: $space-base;
     line-height: 1.3;
-    color: #F9F6F0;
     text-align: left;
     margin-left: $space-x-medium;
     margin-right: $space-x-medium;
@@ -52,7 +50,6 @@
     font-size: 48px;
     margin-bottom: $space-x-large * 2;
     line-height: 1;
-    color: #b1b1b1;
     ;
     text-align: left;
     margin-left: $space-x-medium;
@@ -68,7 +65,6 @@
     font-size: 32px;
     margin-bottom: $space-base;
     line-height: 1;
-    color: #b1b1b1;
     margin-top: 16px;
     margin-left: $space-x-medium;
     margin-right: $space-x-medium;
@@ -79,24 +75,13 @@
     }
   }
 
-  /deep/ a {
-    color: #BAA988;
-    transition: all 700ms;
-
-    &:hover {
-      opacity: 0.5;
-    }
-  }
-
   /deep/ p {
     font-size: 18px;
     margin-bottom: $space-medium;
     line-height: 1.6;
-    color: #F9F6F0;
     padding: 8px 0 24px;
     margin-left: $space-x-medium;
     margin-right: $space-x-medium;
-    font-family: Spectral;
     letter-spacing: -0.2px;
 
     @include md {
