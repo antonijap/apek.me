@@ -54,7 +54,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 16px;
+  grid-gap: 24px;
 
   @include md {
     width: 60%;
