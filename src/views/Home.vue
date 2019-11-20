@@ -54,12 +54,13 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 8%;
+  grid-gap: 16px;
 
   @include md {
     width: 60%;
     margin: 5em auto;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 8%;
   }
 }
 
