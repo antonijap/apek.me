@@ -9,9 +9,27 @@
       <div class="container grid">
         <prismic-rich-text v-if="homepage" :field="homepage.data.slot_1"/>
         <div class="grid-sidebar">
-          <prismic-rich-text v-if="homepage" :field="homepage.data.slot_2"/>
-          <prismic-rich-text v-if="homepage" :field="homepage.data.slot_2"/>
-          <prismic-rich-text v-if="homepage" :field="homepage.data.slot_2"/>
+          <div>
+            <p class="list-title">Some of my work</p>
+            <router-link :to="`/${work.uid}`" v-for="(work, index) in works" :key="index">
+              {{ $prismic.richTextAsPlain(work.data.title) }}
+            </router-link>
+          </div>
+
+          <div>
+            <p class="list-title">Honorable mentions</p>
+            <router-link :to="`/${personal.uid}`" v-for="(personal, index) in personal" :key="index">
+              {{ $prismic.richTextAsPlain(personal.data.title) }}
+            </router-link>
+          </div>
+
+          <div>
+            <p class="list-title">Let's connect</p>
+            <a target="blank" href="https://www.linkedin.com/in/antonijapek/">Linkedin</a>
+            <a target="blank" href="https://twitter.com/captdesign">Twitter</a>
+            <a target="blank" href="https://www.youtube.com/channel/UCCgaKuRMOV_dH3kuaaHPzvA">Youtube</a>
+            <a target="blank" href="mailto:antonijapek@gmail.com">Email</a>
+          </div>
         </div>
 
         <!-- <div class="projects">
@@ -36,114 +54,92 @@
 @import "../assets/scss/main.scss";
 
 .image {
-  width: 80%;
-  margin: 5em auto 5em 0;
-}
+  width: 100%;
 
-.flex-child {
-  margin: auto;
-
-  strong {
-    opacity: 0.5;
+  @include md {
+    width: 90%;
+    margin: 5em auto 5em 0;
   }
-
-  ul {
-    li {
-      list-style-type: none;
-    }
+  
+  @include lg {
+    width: 80%;
   }
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 8%;
-}
-
-.container {
-  width: 90%;
-  margin: 4em auto;
-
-  .grid-sidebar {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 8px;
-  }
 
   @include md {
     width: 60%;
     margin: 5em auto;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.list-title {
+  opacity: 0.5;
+  color: #2B2A25;
+  margin-bottom: $space-base;
+}
+
+.container {
+  width: 90%;
+  margin: 1em auto;
+
+  /deep/ h1 {
+    font-size: 1.5em;
+    line-height: 150%;
+
+    @include md {
+      font-size: 1.8em;
+      margin-top: 5em;
+    }
+
+    @include lg {
+      font-size: 2em;
+    }
+  }
+
+  .grid-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
+
+    div {
+      align-self: start;
+    }
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /deep/ a {
+      line-height: 1.7;
+      margin-bottom: $space-base;
+      display: block;
+      color: inherit;
+      font-weight: 500;
+      &:hover {
+        color: #FF2E00;
+      }
+    }
+  }
+
+  @include md {
+    width: 80%;
+    margin: 5em auto;
   }
 
   @include lg {
-    
+    width: 50%;
+    margin: 5em auto;
   }
 
   @include xl {
     
   }
-
-  /deep/ p {
-    font-size: 18px;
-    margin-bottom: $space-medium;
-    line-height: 1.8;
-  }
-
-  /deep/ h1 {
-    font-size: 48px;
-    line-height: 150%;
-  }
-
-  .projects {
-    margin-bottom: $space-base;
-    margin-top: $space-x-large;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: stretch;
-
-    .project {
-      h2 {
-        color: black;
-        padding: $space-base;
-        display: block;
-      }
-      p {
-        font-size: 18px;
-        line-height: 160%;
-      }
-    }
-
-    @include md {
-      flex-direction: row;
-      .project {
-        &:first-child {
-          padding-left: 0;
-        }
-      }
-    }
-  }
-
-  .ctas {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: stretch;
-    a {
-      color: black;
-      padding: $space-base;
-      display: block;
-    }
-    @include md {
-      flex-direction: row;
-      a {
-        &:first-child {
-          padding-left: 0;
-        }
-      }
-    }
-  }
-
 }
 </style>
 
@@ -155,6 +151,7 @@ export default {
     return {
       homepage: null,
       works: [],
+      personal: [],
       loaded: false
     };
   },
@@ -169,7 +166,11 @@ export default {
           this.home = response.results;
           response.results.map(item => {
             if (item.type === "work") {
-              this.works.push(item);
+              if (item.data.variant == "Personal") {
+                this.personal.push(item);
+              } else {
+                this.works.push(item);
+              }
             } else if (item.type === "homepage") {
               this.homepage = item;
               this.loaded = true

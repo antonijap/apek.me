@@ -64,10 +64,16 @@ $space-x-large: 40px;
 }
 
 * {
-  line-height: 1.5;
+  line-height: 1.7;
   font-size: 16px;
   font-family: 'Hanken Grotesk Regular', serif;
   color: #2B2A25;
+
+  ul {
+    li {
+      list-style-type: none;
+    }
+  }
 }
 
 a {
@@ -77,6 +83,7 @@ a {
   transition: color 340ms ease-out;
   font-weight: 600;
   color: #FF2E00;
+  
 }
 
 img {
