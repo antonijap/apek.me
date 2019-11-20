@@ -16,8 +16,16 @@ $space-x-large: 40px;
   font-family: 'Hanken Grotesk Regular';
   font-style: normal;
   font-weight: normal;
-  src: url("/assets/HKGrotesk-Regular.woff") format("woff"),
-       url("/assets/HKGrotesk-Regular.woff2") format("woff2"),
+  src: url("~@/assets/fonts/HKGrotesk-Regular.woff") format("woff"),
+       url("~@/assets/fonts/HKGrotesk-Regular.woff2") format("woff2"),
+}
+
+@font-face {
+  font-family: 'Hanken Grotesk SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: url("~@/assets/fonts/HKGrotesk-SemiBold.woff") format("woff"),
+       url("~@/assets/fonts/HKGrotesk-SemiBold.woff2") format("woff2"),
 }
 
 // Mixins
