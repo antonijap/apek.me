@@ -12,37 +12,35 @@
 
 .wrapper {
   width: 90%;
-  margin: 4em auto;
+  margin: 1em auto;
 
   @include md {
-    width: 80%;
-    margin: 10em auto;
-  }
-
-  @include xl {
-    width: 70%;
+    width: 50%;
+    margin: 4em auto;
   }
 
   /deep/ .subtitle {
     h3 {
-      font-size: 48px;
-      margin-bottom: $space-x-large * 2;
+      font-size: 24px;
+      margin-bottom: $space-x-large ;
       line-height: 1;
       text-align: left;
+
+      @include md {
+        font-size: 2.5rem;
+        margin-bottom: $space-x-large * 2;
+      }
     }
   }
 
   /deep/ h1 {
-    font-size: 80px;
+    font-size: 40px;
     margin-bottom: $space-base;
     line-height: 1.3;
     text-align: left;
-    margin-left: $space-x-medium;
-    margin-right: $space-x-medium;
 
     @include md {
-      margin-left: $space-x-medium * 4;
-      margin-right: $space-x-medium * 4;
+      font-size: 4rem;
     }
   }
 
@@ -50,63 +48,34 @@
     font-size: 48px;
     margin-bottom: $space-x-large * 2;
     line-height: 1;
-    ;
     text-align: left;
-    margin-left: $space-x-medium;
-    margin-right: $space-x-medium;
-
-    @include md {
-      margin-left: $space-x-medium * 4;
-      margin-right: $space-x-medium * 4;
-    }
   }
 
   /deep/ h3 {
-    font-size: 32px;
-    margin-bottom: $space-base;
+    font-size: 24px;
+    margin-bottom: $space-medium;
     line-height: 1;
     margin-top: 16px;
-    margin-left: $space-x-medium;
-    margin-right: $space-x-medium;
 
     @include md {
-      margin-left: $space-x-medium * 4;
-      margin-right: $space-x-medium * 4;
+      font-size: 2rem;
     }
   }
 
   /deep/ p {
-    font-size: 18px;
     margin-bottom: $space-medium;
     line-height: 1.6;
     padding: 8px 0 24px;
-    margin-left: $space-x-medium;
-    margin-right: $space-x-medium;
-    letter-spacing: -0.2px;
-
-    @include md {
-      margin-left: $space-x-medium * 4;
-      margin-right: $space-x-medium * 4;
-    }
   }
 
   /deep/ ul {
-    padding-left: 24px;
-    margin-top: 8px;
+    margin-top: 16px;
     margin-bottom: 32px;
-    list-style-type: circle;
-    margin-left: $space-x-medium;
-    margin-right: $space-x-medium;
-    color: #F9F6F0;
-
-    @include md {
-      margin-left: $space-x-medium * 4;
-      margin-right: $space-x-medium * 4;
-    }
+    padding-left: 24px;
 
     li {
       line-height: 2;
-      padding-left: 8px;
+      list-style-type: circle;
     }
   }
 }
