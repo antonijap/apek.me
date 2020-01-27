@@ -30,6 +30,11 @@
             <a target="blank" href="https://www.youtube.com/channel/UCCgaKuRMOV_dH3kuaaHPzvA">Youtube</a>
             <a target="blank" href="mailto:antonijapek@gmail.com">Email</a>
           </div>
+
+          <div>
+            <p class="list-title">Resume</p>
+            <a href="https://drive.google.com/file/d/1mC70qO3suwVNkO1KLRFI7ULSlbh9zbkw/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download</a>
+          </div>
         </div>
       </div>
     </div>

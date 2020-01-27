@@ -10,9 +10,6 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.16",
-    "@fortawesome/free-solid-svg-icons": "^5.8.0",
-    "@fortawesome/vue-fontawesome": "^0.1.6",
     "i": "^0.3.6",
     "npm": "^6.9.0",
     "prismic-dom": "^2.1.0",
