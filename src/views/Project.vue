@@ -1,8 +1,9 @@
 <template>
 		<div class="wrapper">
+      <a href="/">Back</a>
 			<prismic-rich-text v-if="project" :field="project.data.title"/>
 			<prismic-rich-text v-if="project" :field="project.data.description" class="subtitle"/>
-			<!-- <img v-if="project" :src="project.data.promo_image.url"> -->
+			<img v-if="project" :src="project.data.promo_image.url">
 			<prismic-rich-text v-if="project" :field="project.data.case"/>
 		</div>
 </template>
@@ -23,7 +24,7 @@
     h3 {
       font-size: 24px;
       margin-bottom: $space-x-large ;
-      line-height: 1;
+      line-height: 1.3;
       text-align: left;
 
       @include md {

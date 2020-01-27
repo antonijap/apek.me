@@ -125,7 +125,7 @@
   }
 
   @include lg {
-    width: 55%;
+    width: 65%;
     margin: 5em auto;
   }
 
