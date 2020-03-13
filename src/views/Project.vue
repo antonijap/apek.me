@@ -20,6 +20,10 @@
     margin: 4em auto;
   }
 
+  img {
+    margin-bottom: $space-large;
+  }
+
   /deep/ h1 {
     font-size: 40px;
     margin-bottom: $space-base;
