@@ -20,23 +20,10 @@
     margin: 4em auto;
   }
 
-  /deep/ .subtitle {
-    h3 {
-      font-size: 24px;
-      margin-bottom: $space-x-large ;
-      line-height: 1.3;
-      text-align: left;
-
-      @include md {
-        font-size: 2.5rem;
-        margin-bottom: $space-x-large * 2;
-      }
-    }
-  }
-
   /deep/ h1 {
     font-size: 40px;
     margin-bottom: $space-base;
+    margin-top: $space-large;
     line-height: 1.3;
     text-align: left;
 
@@ -46,9 +33,9 @@
   }
 
   /deep/ h2 {
-    font-size: 48px;
-    margin-bottom: $space-x-large * 2;
-    line-height: 1;
+    font-size: 32px;
+    margin-bottom: $space-x-large;
+    line-height: 1.4;
     text-align: left;
   }
 
