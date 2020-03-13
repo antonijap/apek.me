@@ -55,9 +55,8 @@
   }
 
   /deep/ p {
-    margin-bottom: $space-medium;
+    margin-bottom: $space-large;
     line-height: 1.6;
-    padding: 8px 0 24px;
   }
 
   /deep/ ul {
